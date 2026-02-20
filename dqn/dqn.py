@@ -63,10 +63,12 @@ class DQN(nn.Module):
             x = x.unsqueeze(0)
         q_values = self.q(x).squeeze(0)             # [action_dim,]
         q_max = q_values.max()                      # [1,]
-        actions = torch.nonzero(q_values == q_max)  # [a_j_1, a_j_2, ...]
-        idx = torch.randint(0,  len(actions), size=(1,)).item()
-        action = int(actions[idx].item())
-        return action , q_max 
+        action = torch.argmax(q_values)             # [1,]
+        return (
+            int(action.item()) , 
+            float(q_max.item()), 
+            q_values.detach().cpu().numpy()
+        )
 
 
 class AtariDQN:
