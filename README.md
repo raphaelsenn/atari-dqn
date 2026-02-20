@@ -35,13 +35,13 @@ from env import make_atari_env
 
 dqn = AtariDQN(
     state_ch=4,
-    action_dim=6,
+    action_dim=6,                               # depends on your env of choice 
     batch_size=32,
-    buffer_capacity=1_000_000,  # make sure you have enough RAM
+    buffer_capacity=1_000_000,                  # make sure you have enough RAM
     device="cuda"
 ) 
-env = make_atari_env("ALE/SpaceInvaders-v5")  # replace with your env of choice
-dqn.learn(env, 50_000_000)      # training steps
+env = make_atari_env("ALE/SpaceInvaders-v5")    # replace with your env of choice
+dqn.learn(env, 50_000_000)                      # training steps
 ```
 
 ### 2. Play
