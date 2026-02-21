@@ -1,6 +1,7 @@
 from argparse import Namespace, ArgumentParser
 
 import gymnasium as gym
+import ale_py
 
 import numpy as np
 
@@ -67,7 +68,7 @@ def parse_args() -> Namespace:
 def main() -> None:
     args = parse_args()
     dqn = DQN(args.state_ch, args.action_dim)
-    dqn.load_state_dict(torch.load(args.weights, map_location="cpu"))
+    dqn.load_state_dict(torch.load(args.weights, map_location="cpu", weights_only=True))
     env = make_atari_env(args.env_id, "human", args.state_ch)
     play(env, dqn, verbose=args.verbose, plotting=args.plotting)
 

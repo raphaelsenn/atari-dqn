@@ -58,12 +58,12 @@ class DQN(nn.Module):
 
     def predict(self, x: torch.Tensor | np.ndarray) -> tuple[int, float]:
         if isinstance(x, np.ndarray): 
-             x = torch.from_numpy(x).to(torch.float32).div_(255.0) 
+            x = torch.from_numpy(x).to(torch.float32).div_(255.0) 
         if x.dim() == 3:
             x = x.unsqueeze(0)
         q_values = self.q(x).squeeze(0)             # [action_dim,]
         q_max = q_values.max()                      # [1,]
-        action = torch.argmax(q_values)             # [1,]
+        action = torch.argmax(q_values, dim=-1)     # [1,]
         return (
             int(action.item()) , 
             float(q_max.item()), 
