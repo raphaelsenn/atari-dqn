@@ -9,7 +9,7 @@ import torch.nn as nn
 import gymnasium as gym
 
 from dqn.replay_buffer import ReplayBuffer
-from env import make_atari_env
+from dqn.env import make_atari_env
 
 
 class DQN(nn.Module):
@@ -64,11 +64,7 @@ class DQN(nn.Module):
         q_values = self.q(x).squeeze(0)             # [action_dim,]
         q_max = q_values.max()                      # [1,]
         action = torch.argmax(q_values, dim=-1)     # [1,]
-        return (
-            int(action.item()) , 
-            float(q_max.item()), 
-            q_values.detach().cpu().numpy()
-        )
+        return (int(action.item()), float(q_max.item()))
 
 
 class AtariDQN:

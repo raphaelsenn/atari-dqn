@@ -1,7 +1,7 @@
 from argparse import Namespace, ArgumentParser
 
 from dqn.dqn import AtariDQN
-from env import make_atari_env
+from dqn.env import make_atari_env
 
 
 def parse_args() -> Namespace:
