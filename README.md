@@ -60,9 +60,9 @@ Training on SpaceInvaders and Breakout took approximately 30 hours on a RTX 3060
 | -------------- | ----------- |
 | ![average_score_breakout](./assets/average_score_breakout.png) | ![average_score_spaceinvaders](./assets/average_score_spaceinvaders.png) |
 
-*Figure (left): Average Score per Episode on Breakout (10 rollouts). One Episode corresponds to 50000 timesteps.*
+*Figure (left): Average Score per Episode on Breakout (10 rollouts) for the first 200 epochs. One Epoch corresponds to 50000 timesteps.*
 
-*Figure (right): Average Score per Episode on SpaceInvaders (10 rollouts). One Episode corresponds to 50000 timesteps.*
+*Figure (right): Average Score per Episode on SpaceInvaders (10 rollouts) for the first 200 epochs. One Epoch corresponds to 50000 timesteps.*
 
 ## Experimental setup
 
